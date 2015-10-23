@@ -4,7 +4,7 @@
 # 2. generate the normalized distribution for Z=1
 # 3. extrapolate the N distribution for different Zs given by the user.
 # Author: Yuding Ai
-# Date: 2015 July 28
+# Date: 2015 Oct 23
 
 import math
 import numpy as np

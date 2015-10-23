@@ -12,7 +12,7 @@ int main()
 
 	// ======================= Plotting the final config ========================
 	vector<HR> VR,HR,UR;
-	MC m(1E5L,8,32,32,32,1);
+	MC m(1E7L,8,32,32,32,1);
 	m.MCSUS();
 	// ======================= end of simulation, print out the time =======
 	double end = clock();
