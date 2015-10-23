@@ -217,7 +217,6 @@ void MC::Del(Cells &s,double &prob,double &probd, double &size)
 				URodlist.erase(URodlist.begin()+indx-nv-nh);
 				nu--;// substract the # of ver rod;
 				du++;
-
 			}
 		}
 	}	
@@ -323,43 +322,6 @@ array<double,10000> MC::MCSUS()
 	myfile.close();
 
 	return WF;  
-}
-
-
-void MC::plot(const vector<HR>& VRodlist, const vector<HR>& HRodlist,const vector<HR>& URodlist)
-{
-	stringstream stv,sth,stu;
-
-	for (int i = 0; i < VRodlist.size(); i++)
-	{
-		stv<< VRodlist[i].getX() << "   "<< VRodlist[i].getY() << "   "<< VRodlist[i].getZ()<<endl;
-	}
-
-	ofstream myfilev ("3dplotv.txt");
-	string datav = stv.str();
-	myfilev << datav;
-	myfilev.close();
-
-	for (int j = 0; j < HRodlist.size(); j++)
-	{
-		sth<< HRodlist[j].getX() << "   "<< HRodlist[j].getY() << "   "<< HRodlist[j].getZ()<<endl;
-	}
-
-	ofstream myfileh ("3dploth.txt");
-	string datah = sth.str();
-	myfileh << datah;
-	myfileh.close();
-
-	for (int k = 0; k < URodlist.size(); k++)
-	{
-		stu<< URodlist[k].getX() << "   "<< URodlist[k].getY() << "   "<< URodlist[k].getZ()<<endl;
-	}
-
-	ofstream myfileu ("3dplotu.txt");
-	string datau = stu.str();
-	myfileu << datau;
-	myfileu.close();
-
 }
 
 

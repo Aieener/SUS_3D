@@ -43,7 +43,6 @@ class MC
         void Add(Cells &s,double &prob,double &proba);
         void Del(Cells &s,double &prob,double &probd, double &size);
     	array<double,10000> MCSUS(); 
-        void plot(const vector<HR>& VRodlist, const vector<HR>& HRodlist,const vector<HR>& URodlist);
 };
 
 #endif /* MC_H */

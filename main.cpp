@@ -1,4 +1,4 @@
-// My main file for HR_MO+
+// My main file for SUS_3D
 // Data: July27 2015
 // Authur: Yuding Ai
 #include "MC.h"
@@ -12,12 +12,8 @@ int main()
 
 	// ======================= Plotting the final config ========================
 	vector<HR> VR,HR,UR;
-	MC m(1E5L,8,32,32,64,1);
+	MC m(1E5L,8,32,32,32,1);
 	m.MCSUS();
-	VR = m.getVRodlist();
-	HR = m.getHRodlist();
-	UR = m.getURodlist();
-	m.plot(VR,HR,UR);	
 	// ======================= end of simulation, print out the time =======
 	double end = clock();
 	cout <<"This simulation takes "<< (double(end-start)/CLOCKS_PER_SEC)<<" sec."<<endl;
