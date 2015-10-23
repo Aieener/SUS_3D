@@ -5,14 +5,12 @@
 #include <string>
 #include "square.h"
 #include "cells.h"
-// #include "MC.h"
 #include "hardrods.h"
 #include <cstdlib>
 #include <cmath>
 #include <time.h>
 #include <vector>
 #include <utility> 
-// #include "python.h"
 using namespace std;
 
 class Histogram {

@@ -1,14 +1,29 @@
 // square.cpp
-// 2-D lattice gas
+// 3-D HR
 // Author: Yuding Ai
 // Date: 2015.06.05
 
+
 #include "square.h"
+
 
 Square::Square()
 {
 	status = 0;
 }
+
+Square::Square(int s)
+{
+	if (s == 1)
+	{
+		status = 1;
+	}
+	else
+	{
+		status = 0;
+	}
+}
+
 // *** Setters *** //
 /*
 *  @function         setStatus

@@ -1,5 +1,5 @@
 // square.h
-// 2-D lattice gas
+// 3-D HR
 // Author: Yuding Ai
 // Date: 2015.06.05
 
@@ -26,6 +26,11 @@ class Square
 		*  Default constructor
 		*/   
 	    Square();
+
+	    /*!
+		*  Constructor that indicates the status of Square
+		*/
+		Square(int s);
 
 
 		// *** Setters *** //

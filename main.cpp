@@ -11,14 +11,13 @@ int main()
 	double start = clock();
 
 	// ======================= Plotting the final config ========================
-	vector<HR> VR,HR;
-	MC m(1E5L,8,64,64,1);
+	vector<HR> VR,HR,UR;
+	MC m(1E5L,8,64,64,64,1);
 	m.MCSUS();
 	VR = m.getVRodlist();
 	HR = m.getHRodlist();
-	m.plot(VR,HR);
-	// ======================= get data for N vs z ========================
-	// m.Zvs_();
+	UR = m.getURodlist();
+	m.plot(VR,HR,UR);	
 	// ======================= end of simulation, print out the time =======
 	double end = clock();
 	cout <<"This simulation takes "<< (double(end-start)/CLOCKS_PER_SEC)<<" sec."<<endl;
@@ -27,6 +26,5 @@ int main()
 	string datat = t.str();
 	myfile << datat;
 	myfile.close();	
-
 	return 0;
 }
