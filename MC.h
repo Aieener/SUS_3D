@@ -42,7 +42,7 @@ class MC
     	// ******** Other Functianality *******//
         void Add(Cells &s,double &prob,double &proba);
         void Del(Cells &s,double &prob,double &probd, double &size);
-    	array<double,10000> MCSUS(); 
+    	array<double,100000> MCSUS(); 
 };
 
 #endif /* MC_H */

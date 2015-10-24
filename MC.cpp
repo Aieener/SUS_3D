@@ -223,7 +223,7 @@ void MC::Del(Cells &s,double &prob,double &probd, double &size)
 }
 
 
-array<double,10000> MC::MCSUS()
+array<double,100000> MC::MCSUS()
 {
 	Cells s(n0,n1,n2,EMPTY,length);  //  setting the lattice;
 	//==========================================================  declare instance variables ============================================================= //
@@ -235,7 +235,7 @@ array<double,10000> MC::MCSUS()
 	double aaccp,daccp;      // the acceptance probabilities: 
 	double V = double(n0*n1*n2);    // the total lattice size
 	double K = double(length); //
-    array<double,10000> WF;
+    array<double,100000> WF;
 
 	srand(time(NULL));
 	long int i = 0; // counter for each window
