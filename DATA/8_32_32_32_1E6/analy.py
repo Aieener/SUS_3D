@@ -49,8 +49,8 @@ def Pplot(PN,z):
 def enlargePplot(PN,z):
 	fig = plt.figure()	
 	plt.plot(PN,'+b-',markersize=3,linewidth = 0.1)
-	plt.xlim(1800,2200)
-	plt.ylim(0,0.016)
+	plt.xlim(2000,2800)
+	plt.ylim(0,0.019)
 	Z = str(z)
 	ylabel = 'P(N;Z='+ Z + ')'
 	plt.ylabel(ylabel)
@@ -92,7 +92,7 @@ def main():
 
 	for i in range(40):
 		W = PN()[0] # take the original weighting function 		
-		t = 8.67 + 0.01*i
+		t = 20.55 + 0.05*i
 		Pe = exploPN(W,t)
 		Pplot(Pe,t)
 		enlargePplot(Pe,t)
