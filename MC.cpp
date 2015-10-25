@@ -243,8 +243,8 @@ array<double,100000> MC::MCSUS()
 	double fu,fl; // occurrence counter
 
 
-	//================================Start my MC simulation=================================
-	while (w <= 0.8*V/K) // while loop terminate until finish the last window; window[V/K]; !!!rods: 0.8*V/K
+	//================================Start my SUS_MC simulation=================================
+	while (w <= 0.8*V/K) // the while loop terminates when finish simulating the last window: window[V/K]; !!!for rods: window[0.8*V/K]
 	{
 		i = 0;  // initialize my step counter; 
 		fl = fu = 0; // initialize my occurrence counter;
@@ -283,11 +283,11 @@ array<double,100000> MC::MCSUS()
 				}			
 			}	
 
-			if (nv+nh+nu == w) // only update the fu when addition succeessfully.
+			if (nv+nh+nu == w) // update the fu after each step.
 			{
 				fu++; // if at the upper window, update fu
 			}
-			else if (nv+nh+nu == w-1 )  // only update the fu when deletion succeessfully.
+			else if (nv+nh+nu == w-1 )  // update the fl after each step.
 			{
 				fl++;//if at the lower window, update fl
 			}	
@@ -307,7 +307,7 @@ array<double,100000> MC::MCSUS()
 			// initial config determine the intial value of fu and fl
 		    w++; // switch into the next window
         }
-        // else reset fu and fl and repeat the simulation
+        // else do nothing and reset fu and fl and repeat the window simulation
 	}
 
 	for(int i = 0; i< 0.8*V/K+1; i++) // V/K multiply 0.8 for rods
