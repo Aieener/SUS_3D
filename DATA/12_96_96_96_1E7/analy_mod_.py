@@ -49,8 +49,8 @@ def Pplot(PN,z):
 def enlargePplot(PN,z):
 	fig = plt.figure()	
 	plt.plot(PN,'+b-',markersize=3,linewidth = 0.1)
-	plt.xlim(21000,23000)
-	plt.ylim(0,0.007)
+	# plt.xlim(6400,7400)
+	# plt.ylim(0,0.007)
 	Z = str(z)
 	ylabel = 'P(N;Z='+ Z + ')'
 	plt.ylabel(ylabel)
@@ -69,14 +69,19 @@ def Wplot(WN):
 
 def exploPN(W,z):
 	P = [] # a list of number distribution
-	for i in range(len(W)):
-		W[i] = W[i] + i*math.log(z)
+	WF = list(W)
+	for i in range(len(WF)):
+		WF[i] = WF[i] + i*math.log(z)
 
-	maxi = max(W)
+	maxi = max(WF)
 	if maxi > 500:
 		for j in range(len(W)):
-			W[j] = W[j]-maxi +500
-			P.append(math.exp(W[j]));
+			WF[j] = WF[j]-maxi +500
+			P.append(math.exp(WF[j]));
+	# else:
+	# 	for j in range(len(W)):
+	# 		P.append(math.exp(WF[j]));
+
 	P = [float(k)/sum(P) for k in P]
 	return P
 
@@ -87,16 +92,15 @@ def main():
 	P = PN()[1] # take the P(N;z=1)
 	W = PN()[0] # take the original weighting function 
 
-	# Wplot(W)
-	# Pplot(P,1)
-	Pe = exploPN(W,2.96)
-	enlargePplot(Pe,2.96)
+	Wplot(W)
+	Pplot(P,1)
+	# Pe = exploPN(W,3.08)
+	# enlargePplot(Pe,3.08)
 
-	# for i in range(10):
-	# 	W = PN()[0] # take the original weighting function 		
-	# 	t = 2.93 + 0.02*i
-	# 	Pe = exploPN(W,t)
-	# 	# Pplot(Pe,t)
-	# 	enlargePplot(Pe,t)
+	for i in range(10):
+		t = 2.03 + 0.02*i
+		Pe = exploPN(W,t)
+		# Pplot(Pe,t)
+		enlargePplot(Pe,t)
 
 main()
