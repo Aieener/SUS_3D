@@ -12,7 +12,7 @@
 
 #include "MC.h"
 
-MC::MC(long int ST, int LEN, int N0, int N1, int N2, double Z)
+MC::MC(long int ST, int LEN, int N0, int N1, int N2, double Z,double W)
 {
 	VRodlist.clear(); // the list storage the Vertical Rods;
     HRodlist.clear(); // the list storage the Horizantal Rods;
@@ -23,6 +23,7 @@ MC::MC(long int ST, int LEN, int N0, int N1, int N2, double Z)
 	length = LEN;     // length of rod
 	step = ST;        // MC steps
 	z = Z;            // activity z = exp(beta*miu)
+	ws = W;            // ws is the window size of my SUS_sampling method
 	nh=nv=nu=dh=dv=du=ah=av=au=0;            // initialize all my number count into 0; ie. nh stands for number of horizontal rods
 	                                         // dh stands for the times of deletion for for horizontal rods and ah is for addition.
 }
@@ -244,7 +245,7 @@ array<double,100000> MC::MCSUS()
 
 
 	//================================Start my SUS_MC simulation=================================
-	while (w <= 0.8*V/K) // the while loop terminates when finish simulating the last window: window[V/K]; !!!for rods: window[0.8*V/K]
+	while (w <= 0.8*V/(K*ws)) // the while loop terminates when finish simulating the last window: window[V/(K*ws)]; !!!for rods: window[0.8*V/K]
 	{
 		i = 0;  // initialize my step counter; 
 		fl = fu = 0; // initialize my occurrence counter;
@@ -267,7 +268,7 @@ array<double,100000> MC::MCSUS()
 	        // ===========================Addition ===================================
 			if(addordel == 0) 
 			{
-				if (nv+nh+nu < w  ) // only try to add if the size is below the upper window
+				if (nv+nh+nu < w*ws   ) // only try to add if the size is below the upper window
 				{
 					//try to Do Addition;
 					Add(s,prob,proba);
@@ -276,18 +277,18 @@ array<double,100000> MC::MCSUS()
 			// ============================Deletion=============================
 			else 
 			{
-				if (nv+nh+nu > w - 1) // only try to delete if the size is above the lower window size
+				if (nv+nh+nu > (w-1)*ws  ) // only try to delete if the size is above the lower window size
 				{
 					//Do deletion;
 					Del(s,prob,probd,size);	
 				}			
 			}	
 
-			if (nv+nh+nu == w) // update the fu after each step.
+			if (nv+nh+nu >= w*ws && nv+nh+nu < (w+1)*ws ) // update the fu after each step.
 			{
 				fu++; // if at the upper window, update fu
 			}
-			else if (nv+nh+nu == w-1 )  // update the fl after each step.
+			else if (nv+nh+nu >= (w-1)*ws && nv+nh+nu < (w)*ws )  // update the fl after each step.
 			{
 				fl++;//if at the lower window, update fl
 			}	
@@ -303,7 +304,7 @@ array<double,100000> MC::MCSUS()
 
 	        cout << fl<<"  "<<fu <<" " <<nv <<"  "<<WF[w+1]<<endl;
 			// ======================= Print out the data into terminal =============================================		
-			cout <<"Window: "<< w <<" : "<<"W("<<w<<" : lower) = "<< WF[w-1]<<" "<<"W("<<w<<" : Upper) = "<< WF[w] << endl;
+			cout <<"Progress: "<< w/(0.8*V/(K*ws))*100 <<"%   "<<"Window: "<< w <<" : "<<"W("<<w<<" : lower) = "<< WF[w-1]<<" "<<"W("<<w<<" : Upper) = "<< WF[w] << endl;
 			// initial config determine the intial value of fu and fl
 		    w++; // switch into the next window
         }

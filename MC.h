@@ -27,12 +27,13 @@ class MC
         int length; // length of the rod
         long int step;
         double z; 
+        double ws;
         double nh,nv,nu,dh,dv,du,ah,av,au;
         
 
     public:
         enum INIT {EMPTY,BOX,PLANE};
-        MC(long int ST, int LEN, int N0, int N1, int N2, double Z); //(x->n0, y->n1,z->n2)
+        MC(long int ST, int LEN, int N0, int N1, int N2, double Z, double W); //(x->n0, y->n1, z->n2)
 
     	// ********* Getters********//
         const vector<HR>& getVRodlist() const;
