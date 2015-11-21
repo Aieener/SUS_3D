@@ -311,7 +311,7 @@ array<double,100000> MC::MCSUS()
         // else do nothing and reset fu and fl and repeat the window simulation
 	}
 
-	for(int i = 0; i< 0.8*V/K+1; i++) // V/K multiply 0.8 for rods
+	for(int i = 0; i< 0.8*V/(K*ws)+1; i++) // V/K multiply 0.8 for rods
 	{
 		sh<<WF[i]<<endl;
 	}
