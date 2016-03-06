@@ -87,16 +87,16 @@ def main():
 	P = PN()[1] # take the P(N;z=1)
 	W = PN()[0] # take the original weighting function 
 
-	# Wplot(W)
+	Wplot(W)
 	# Pplot(P,"1")
 	# Pe = exploPN(W,4.44)
 	# enlargePplot(Pe,4.44)
 
-	for i in range(10):
-		W = PN()[0] # take the original weighting function 		
-		t = 3.83 + 0.02*i
-		Pe = exploPN(W,t)
-		# Pplot(Pe,t)
-		enlargePplot(Pe,t)
+	# for i in range(10):
+	# 	W = PN()[0] # take the original weighting function 		
+	# 	t = 3.83 + 0.02*i
+	# 	Pe = exploPN(W,t)
+	# 	# Pplot(Pe,t)
+	# 	enlargePplot(Pe,t)
 
 main()

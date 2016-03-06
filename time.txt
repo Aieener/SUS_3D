@@ -1,1 +1,1 @@
-This simulation takes 33012.9 sec.
+This simulation takes 2468.92 sec.

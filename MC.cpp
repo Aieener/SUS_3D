@@ -244,7 +244,7 @@ array<double,100000> MC::MCSUS()
 
 
 	//================================Start my SUS_MC simulation=================================
-	while (w <= 0.8*V/K) // the while loop terminates when finish simulating the last window: window[V/K]; !!!for rods: window[0.8*V/K]
+	while (w <= 0.7*V/K) // the while loop terminates when finish simulating the last window: window[V/K]; !!!for rods: window[0.8*V/K]
 	{
 		i = 0;  // initialize my step counter; 
 		fl = fu = 0; // initialize my occurrence counter;
@@ -258,8 +258,10 @@ array<double,100000> MC::MCSUS()
 			
 			prob = ((double) rand() / (RAND_MAX)); 
 
-			aaccp = (z*V)/((size+1.0)*K)*(exp(WF[int(size+1)] - WF[int(size)]));
-			daccp = (size*K)/(z*V)*(exp(WF[int(size-1)] - WF[int(size)]));	
+			// aaccp = (z*V)/((size+1.0)*K)*(exp(WF[int(size+1)] - WF[int(size)]));
+			aaccp = (z*V)/((size+1.0)*K);
+			// daccp = (size*K)/(z*V)*(exp(WF[int(size-1)] - WF[int(size)]));	
+			daccp = (size*K)/(z*V);
 
 			probd = min(1.0,daccp);
 			proba = min(1.0,aaccp);
@@ -310,7 +312,7 @@ array<double,100000> MC::MCSUS()
         // else do nothing and reset fu and fl and repeat the window simulation
 	}
 
-	for(int i = 0; i< 0.8*V/K+1; i++) // V/K multiply 0.8 for rods
+	for(int i = 0; i< 0.7*V/K+1; i++) // V/K multiply 0.8 for rods
 	{
 		sh<<WF[i]<<endl;
 	}
