@@ -125,10 +125,7 @@ Cells::Cells(int X, int Y, int Z, int init,int length)
 */
 Cells::~Cells()
 {   
-	if(arr)
-	{
-		delete [] arr;
-	}
+	delete [] arr;	
 }
 
 // *** Getters *** //
