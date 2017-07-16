@@ -1,2 +1,2 @@
 # SUS_3D
-The Successive umbrella sampling for 3D rods
+Simulating thin film growth with 3-D Rod like particles: Using the Successive umbrella sampling Algorithm
